@@ -1,0 +1,23 @@
+{
+  "name": "jcard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sumawav/jcard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sumawav/jcard/issues"
+  },
+  "homepage": "https://github.com/sumawav/jcard#readme",
+  "dependencies": {
+    "cropperjs": "^1.5.12",
+    "jspdf": "^2.5.1"
+  }
+}
