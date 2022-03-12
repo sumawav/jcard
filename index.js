@@ -1,9 +1,14 @@
 import Cropper from './cropper.esm.js';
+
 const URL = window.URL || window.webkitURL;
 const REGEXP_MIME_TYPE_IMAGES = /^image\/\w+$/;
 const REGEXP_URLS = /^(?:https?|data):/;
 
 const fileInput = document.getElementById('file');
+
+function showEditor() {
+    document.getElementById('editor').style.display = 'block';
+}
 
 function read(file, event) {
     return new Promise((resolve, reject) => {
@@ -43,6 +48,7 @@ fileInput.onchange = ({ target }) => {
                 console.log('successful read');
                 console.log(data);
                 // this.update(data);
+                showEditor();
             })
             .catch((e) => {
                 target.value = '';
