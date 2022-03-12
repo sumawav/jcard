@@ -7,7 +7,13 @@ const REGEXP_URLS = /^(?:https?|data):/;
 const fileInput = document.getElementById('file');
 
 function showEditor() {
+    document.getElementById('loader').style.display = 'none';
     document.getElementById('editor').style.display = 'block';
+}
+
+function showLoader() {
+    document.getElementById('loader').style.display = 'table';
+    document.getElementById('editor').style.display = 'none';
 }
 
 function read(file, event) {
@@ -38,6 +44,39 @@ function read(file, event) {
     });
 }
 
+function startCropper() {
+    console.log('inside startCropper');
+    const image = document.getElementById('image');
+    console.log(image);
+    const cropper = new Cropper(image, {
+        autoCrop: false,
+        dragMode: 'move',
+        background: false,
+
+        ready: () => {
+            console.log('cropper started!');
+            // if (this.croppedData) {
+            //     this.cropper
+            //         .crop()
+            //         .setData(this.croppedData)
+            //         .setCanvasData(this.canvasData)
+            //         .setCropBoxData(this.cropBoxData);
+            //     this.croppedData = null;
+            //     this.canvasData = null;
+            //     this.cropBoxData = null;
+            // }
+        },
+
+        crop: ({ detail }) => {
+            if (detail.width > 0 && detail.height > 0 && !data.cropping) {
+                // this.update({
+                //     cropping: true,
+                // });
+            }
+        },
+    });
+}
+
 fileInput.onchange = ({ target }) => {
     const { files } = target;
 
@@ -49,6 +88,9 @@ fileInput.onchange = ({ target }) => {
                 console.log(data);
                 // this.update(data);
                 showEditor();
+                document.getElementById('image').src = data.url;
+                console.log('attempting to start cropper');
+                startCropper();
             })
             .catch((e) => {
                 target.value = '';
