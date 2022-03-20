@@ -49,9 +49,20 @@ function startCropper() {
     const image = document.getElementById('image');
     console.log(image);
     const cropper = new Cropper(image, {
-        autoCrop: false,
+        viewMode: 1,
+        autoCrop: true,
+        aspectRatio: 1219 / 1200,
         dragMode: 'move',
-        background: false,
+        rotatable: false,
+        // background: false,
+        // scalable: false,
+        cropBoxMovable: false,
+        cropBoxResizable: false,
+        toggleDragModeOnDblclick: false,
+        data: {
+            width: 1219,
+            height: 1200,
+        },
 
         ready: () => {
             console.log('cropper started!');
