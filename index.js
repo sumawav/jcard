@@ -68,11 +68,12 @@ function startCropper() {
         },
 
         crop: ({ detail }) => {
-            if (detail.width > 0 && detail.height > 0 && !data.cropping) {
-                // this.update({
-                //     cropping: true,
-                // });
-            }
+            // if (detail.width > 0 && detail.height > 0 && !data.cropping) {
+            //     this.update({
+            //         cropping: true,
+            //     });
+            // }
+            console.log(detail);
         },
     });
 }
